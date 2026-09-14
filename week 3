@@ -1,0 +1,209 @@
+Q.1 Write a program for array insertion
+#include <stdio.h>
+
+int insertion(int array[], int n, int pos, int value)
+{
+    int i;
+
+    for(i = n; i > pos; i--)
+    {
+        array[i] = array[i-1];
+    }
+
+    array[pos] = value;
+    n++;
+
+    return n;
+}
+
+int main()
+{
+    int array[10] = {10, 20, 30, 40};
+    int n = 4;
+    int pos = 2;
+    int value = 4;
+    int i;
+
+    n = insertion(array, n, pos, value);
+
+    printf("Element after insertion is:");
+    for(i = 0; i < n; i++)
+    {
+        printf("%d", array[i]);
+    }
+
+    return 0;
+}
+Output -
+Element after insertion is: 10,20,4,30,40
+Q.2 Write a program for array deletion
+#include <stdio.h>
+
+int deletion(int array[], int n, int pos)
+{
+    int i;
+
+    for(i = pos; i < n; i++)
+    {
+        array[i] = array[i+1];
+    }
+
+    n--;
+
+    return n;
+}
+
+int main()
+{
+    int array[10] = {10, 20, 30, 40, 50};
+    int n = 5;
+    int pos = 2;
+    int i;
+
+    n = deletion(array, n, pos);
+
+    printf("Element after deletion is:");
+    for(i = 0; i < n; i++)
+    {
+        printf("%d", array[i]);
+    }
+
+    return 0;
+}
+Output -
+Element after deletion is: 10,20,40,50.
+Q.3 Write a program for array searching
+#include <stdio.h>
+
+int searching(int array[], int n, int key)
+{
+    int i;
+
+    for(i = 0; i < n; i++)
+    {
+        if(array[i] == key)
+            return i;
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int array[10] = {10, 20, 30, 40};
+    int n = 5;
+    int key = 30;
+    int i;
+
+    int result = searching(array, n, key);
+
+    if(result != -1)
+    {
+        printf("found at %d", result);
+    }
+    else
+    {
+        printf("not found\n");
+    }
+
+    return 0;
+}
+Output -
+found at 2
+Q.4 Write a program for array binary search (iterative)
+#include <stdio.h>
+
+int binary_search(int array[], int x, int low, int high)
+{
+    while(low <= high)
+    {
+        int mid;
+
+        mid = low + (high-low)/2;
+
+        if(x == array[mid])
+        {
+            return mid;
+        }
+
+        if(x > array[mid])
+        {
+            low = mid+1;
+        }
+        else
+        {
+            high = mid-1;
+        }
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int array[] = {10, 15, 20, 25, 30, 35, 40, 45, 50, 55,
+                   60};
+
+    int n = sizeof(array)/sizeof(array[0]);
+
+    int x = 45;
+
+    int result = binary_search(array, x, 0, n-1);
+
+    if(result == -1)
+    {
+        printf("not found");
+    }
+    else
+    {
+        printf("found at %d", result);
+    }
+
+    return 0;
+}
+Output -
+found at 7
+Q.5 Write a program for array binary search (recursive)
+#include <stdio.h>
+
+int binarysearch(int array[], int x, int low, int high)
+{
+    if(low <= high)
+    {
+        int mid;
+
+        mid = low + (high-low)/2;
+
+        if(x == array[mid])
+            return mid;
+
+        if(x > array[mid])
+            return binarysearch(array, x, mid+1, high);
+
+        return binarysearch(array, x, low, mid-1);
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int array[] = {10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60};
+
+    int n = sizeof(array)/sizeof(array[0]);
+
+    int x = 45;
+
+    int result = binarysearch(array, x, 0, n-1);
+
+    if(result == -1)
+    {
+        printf("notfound");
+    }
+    else
+    {
+        printf("found at %d", result);
+    }
+}
+Output -
+found at 7
