@@ -1,0 +1,84 @@
+1. Print DSA for five times in a loop
+#include <stdio.h>
+
+int main()
+{
+    for(int i = 0; i < 5; i++)
+    {
+        printf("DSA\n");
+    }
+
+    return 0;
+}
+Output:
+DSA
+DSA
+DSA
+DSA
+DSA
+2. Checking for loop in various cases
+If remove i = 0
+for(; i < 5; i++)
+It will show no output because i has not been declared or initialized elsewhere. The program will give an error or behave unexpectedly.
+If remove i < 5
+for(int i = 0; ; i++)
+The loop runs infinitely, printing DSA forever because the condition is omitted, so it is treated as always true.
+If remove i++
+for(int i = 0; i < 5; )
+If initialization, condition and increment parts are omitted, it becomes equivalent to:
+while()
+The condition is considered always true, so the loop never ends. The loop runs infinitely, printing DSA forever.
+Q.3 Print the pattern
+*
+**
+***
+****
+#include <stdio.h>
+
+int main()
+{
+    int i, j;
+
+    for(i = 1; i < 5; i++)
+    {
+        for(j = 0; j < i; j++)
+        {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+Output:
+*
+**
+***
+****
+Q.4 Print this pattern
+*****
+***
+*
+#include <stdio.h>
+
+int main()
+{
+    int i, j;
+
+    for(i = 0; i < 4; i++)
+    {
+        for(j = 1; j < 4; j++)
+        {
+            printf("*");
+        }
+
+        printf("\n");
+    }
+
+    return 0;
+}
+Output:
+*****
+***
+*
