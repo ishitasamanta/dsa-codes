@@ -1,0 +1,199 @@
+Q1) Playing With Pointers (&, *)
+
+#include <stdio.h>
+
+int main()
+{
+    int age = 25;
+    int *p = &age;
+    int **pp = &p;
+
+    printf("%d,%d,%d\n", age, *p, **pp);
+
+    (*p)++;
+
+    printf("%d,%d\n", age, *p);
+
+    **pp += 10;
+
+    printf("%d,%d,%d\n", age, *p, **pp);
+
+    int x = 50;
+    *p = &x;
+
+    printf("%d,%d,%d\n", x, *p, **pp);
+
+    (*p) = -5;
+
+    printf("%d,%d,%d\n", x, *p, **pp);
+
+    printf("%d,%d\n", age, x);
+
+    return 0;
+}
+Output
+25, 25, 25
+26, 26
+36, 36, 36
+50, 50, 50
+-5, -5, -5
+36, -5
+Q2) WAP to access element of an array using pointer.
+
+#include <stdio.h>
+
+int main()
+{
+    int arr[5] = {1, 2, 3, 4, 5};
+
+    printf("after access:");
+    printf("%d", *(arr + 2));
+
+    return 0;
+}
+Output
+after access: 3
+Q3) WAP to traverse an array using pointers.
+
+#include <stdio.h>
+
+void traverse(int *p, int size)
+{
+    int i;
+
+    printf("after traversing:");
+
+    for(i = 0; i < size; i++)
+    {
+        printf("%d", *(p + i));
+    }
+}
+
+int main()
+{
+    int arr[5] = {1, 2, 3, 4, 5};
+
+    traverse(arr, 5);
+
+    return 0;
+}
+Output
+after traversing: 1, 2, 3, 4, 5
+Q4) Write a program to perform linear searching pointers.
+
+#include <stdio.h>
+
+int searching(int arr[], int n, int key)
+{
+    int i;
+
+    for(i = 0; i < n; i++)
+    {
+        if(*(arr + i) == key)
+        {
+            return i;
+        }
+    }
+
+    return -1;
+}
+
+int main()
+{
+    int arr[5] = {10, 20, 30, 40};
+    int n = 5;
+    int key = 30;
+
+    int result = searching(arr, n, key);
+
+    if(result != -1)
+    {
+        printf("found at %d", result);
+    }
+    else
+    {
+        printf("not found");
+    }
+
+    return 0;
+}
+Output
+found at 2
+Q5) Write a switch case program to calculate address of a 2D array.
+
+#include <stdio.h>
+
+void array(int b, int w, int i, int m, int lb,
+           int n, int lc, int choice)
+{
+    int result = 0;
+
+    switch(choice)
+    {
+        case 1:
+            result = b + w * ((i - lb) * n + (j - lc));
+            printf("row major: %d", result);
+            break;
+
+        case 2:
+            result = b + w * ((j - lc) * m + (i - lb));
+            printf("column major: %d", result);
+            break;
+
+        default:
+            printf("Invalid choice");
+            break;
+    }
+}
+
+int main()
+{
+    int b, w, i, m, int lb, int j,
+        int lc, int choice;
+
+    int n = 4;
+    int m = 4;
+
+    int a[4][4] =
+    {
+        {1, 2, 3, 4},
+        {5, 6, 7, 8},
+        {9, 10, 11, 12},
+        {13, 14, 15, 16}
+    };
+
+    printf("Enter Base Address(b):");
+    scanf("%d", &b);
+
+    printf("Enter Data Width(w):");
+    scanf("%d", &w);
+
+    printf("Enter the Lower Bound of Rows(lb):");
+    scanf("%d", &lb);
+
+    printf("Enter the Lower Bound of Columns(lc):");
+    scanf("%d", &lc);
+
+    printf("Enter Row Index(i):");
+    scanf("%d", &i);
+
+    printf("Enter Column Index(j):");
+    scanf("%d", &j);
+
+    printf("Enter Choice (1 or 2):");
+    scanf("%d", &choice);
+
+    array(b, w, i, m, n, lb, lc, choice);
+
+    return 0;
+}
+Output
+Enter Base Address(b): 1600
+Enter Data Width(w): 4
+Enter Lower Bound of Rows(lb): 0
+Enter Lower Bound of Columns(lc): 0
+Enter Row Index(i): 2
+Enter Column Index(j): 2
+Enter Choice (1 or 2): 1
+
+row major: 1640
