@@ -1,0 +1,133 @@
+Q1. Write a program of factorial using:
+Recursion
+Iteration
+#include <stdio.h>
+
+int fact_rec(int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
+
+    return n * fact_rec(n - 1);
+}
+
+int fact_ite(int n)
+{
+    int fact = 1;
+    int i;
+
+    for (i = n; i > 0; i--)
+    {
+        fact *= i;
+    }
+
+    return fact;
+}
+
+int main()
+{
+    int a;
+
+    printf("Enter a number: ");
+    scanf("%d", &a);
+
+    printf("%d! = %d\n", a, fact_rec(a));
+    printf("%d! = %d\n", a, fact_ite(a));
+
+    return 0;
+}
+Output:
+5! = 120
+5! = 120
+Q2. Data Structure
+
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+    char data_structure[20];
+
+    printf("Enter data structure: ");
+    scanf("%s", data_structure);
+
+    if (strcmp(data_structure, "Array") == 0)
+        printf("Type: Linear DS");
+
+    else if (strcmp(data_structure, "LL") == 0)
+        printf("Type: Linear DS");
+
+    else if (strcmp(data_structure, "Tree") == 0)
+        printf("Type: Non Linear DS");
+
+    else if (strcmp(data_structure, "Graph") == 0)
+        printf("Type: Non Linear DS");
+
+    else
+        printf("Invalid data structure");
+
+    return 0;
+}
+Example output:
+Enter data structure: Array
+Type: Linear DS
+Q3. Input 1D Array and 2D Array
+Print both arrays.
+#include <stdio.h>
+
+int main()
+{
+    int A[5] = {10, 20, 30, 40, 50};
+
+    int b[2][3] = {
+        {12, 32, 34},
+        {56, 52, ...}
+    };
+
+    int i, j;
+
+    printf("1-D Array:\n");
+
+    for (i = 0; i < 5; i++)
+    {
+        printf("%d ", A[i]);
+    }
+
+    printf("\n2-D Array:\n");
+
+    for (i = 0; i < 2; i++)
+    {
+        for (j = 0; j < 3; j++)
+        {
+            printf("%d ", b[i][j]);
+        }
+        printf("\n");
+    }
+
+    return 0;
+}
+OUTPUT:
+1-D Array element: 10 20 30 40 50
+2-D Array element: 1 2 3
+                   4 5 6
+Q4. Access one element from both arrays
+#include <stdio.h>
+
+int main()
+{
+    int A[5] = {10, 20, 30, 40, 50};
+
+    int b[2][3] = {
+        {1, 2, 3},
+        {4, 5, 6}
+    };
+
+    printf("1-D Array element: %d", A[2]);
+
+    printf("2-D Array element: %d", b[1][2]);
+
+    return 0;
+}
+Output:
+1-D Array element: 30
+2-D Array element: 6
